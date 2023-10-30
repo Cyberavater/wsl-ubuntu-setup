@@ -5,8 +5,9 @@ set -o pipefail
 
 echo -e "\e[94mAdding Repositories...\e[39m"
 sudo apt install -y gpg-agent wget
-wget --show-progress -O- https://repositories.intel.com/graphics/intel-graphics.key |
-  sudo gpg --dearmor --force --output /usr/share/keyrings/intel-graphics.gpg
+wget --show-progress -O intel-graphics.key https://repositories.intel.com/graphics/intel-graphics.key
+sudo gpg --dearmor intel-graphics.key intel-graphics.gpg
+sudo cp --force intel-graphics.gpg /usr/share/keyrings/
 echo 'deb [arch=amd64,i386 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/graphics/ubuntu jammy arc' | sudo tee /etc/apt/sources.list.d/intel.gpu.jammy.list
 
 echo -e "\e[94mInstalling GPU Runtime...\e[39m"
