@@ -5,9 +5,10 @@ ARCHIVE_URL=$(curl -s 'https://data.services.jetbrains.com/products/releases?cod
 ARCHIVE_FILENAME=$(basename "$ARCHIVE_URL")
 
 echo -e "\e[94mDownload and installing $ARCHIVE_FILENAME...\e[39m"
-#sudo wget --show-progress -O- "$ARCHIVE_URL" | sudo tar -xzf - -C /opt
-sudo curl -L --progress-bar "$ARCHIVE_URL" | sudo tar -xzf - --strip-components=1 -C /opt
+sudo wget --show-progress -O- "$ARCHIVE_URL" | sudo tar -xzf - -C /opt
+#sudo curl -L --progress-bar "$ARCHIVE_URL" | sudo tar -xzf - --strip-components=1 -C /opt
 
 echo -e "\e[94mSetting Launcher Icon on Windows...\e[39m"
 echo -e "[Desktop Entry]\nType=Application\nName=Jetbrains Toolbox\nExec=/opt/jetbrains-toolbox" | sudo tee /usr/share/applications/toolbox.desktop
 
+sudo apt install libgtk-3-dev
