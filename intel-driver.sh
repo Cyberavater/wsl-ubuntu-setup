@@ -7,7 +7,7 @@ echo -e "\e[94mAdding Repositories...\e[39m"
 sudo apt install -y gpg-agent wget
 wget --show-progress -O- https://repositories.intel.com/graphics/intel-graphics.key |
   sudo gpg --dearmor --output /usr/share/keyrings/intel-graphics.gpg
-echo 'deb [arch=amd64,i386 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/graphics/ubuntu jammy arc' | sudo tee -y /etc/apt/sources.list.d/intel.gpu.jammy.list
+echo 'deb [arch=amd64,i386 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/graphics/ubuntu jammy arc' | sudo tee /etc/apt/sources.list.d/intel.gpu.jammy.list
 
 echo -e "\e[94mInstalling GPU Runtime...\e[39m"
 sudo apt update
