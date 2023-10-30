@@ -3,6 +3,8 @@
 set -e
 set -o pipefail
 
+#https://www.intel.com/content/www/us/en/docs/oneapi/installation-guide-linux/2023-2/configure-wsl-2-for-gpu-workflows.html
+
 echo -e "\e[94mAdding Repositories...\e[39m"
 sudo apt-get install -y gpg-agent wget
 wget -qO - https://repositories.intel.com/graphics/intel-graphics.key |
