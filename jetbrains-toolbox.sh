@@ -15,7 +15,7 @@ sudo wget --show-progress -O- "$ARCHIVE_URL" | sudo tar -xzf - --strip-component
 #echo -e "\e[94mSetting Launcher Icon on Windows...\e[39m"
 #echo -e "[Desktop Entry]\nType=Application\nName=Jetbrains Toolbox\nExec=/opt/jetbrains-toolbox" | sudo tee /usr/share/applications/toolbox.desktop
 sudo apt update
-sudo apt install -y libfuse2 libappimage0
+sudo apt install -y libappimage0
 
 if [ -z "$CI" ]; then
 	echo -e "\e[94mRunning for the first time to set-up...\e[39m"
