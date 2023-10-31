@@ -36,7 +36,7 @@ echo "[Desktop Entry]
       Type=Application
       Name=JetBrains Toolbox
       Exec=jetbrains-toolbox
-      Icon=$INSTALL_DIR/toolbox.svg
+      Icon=jetbrains-toolbox
       StartupNotify=false
       Terminal=false
       MimeType=x-scheme-handler/jetbrains;
