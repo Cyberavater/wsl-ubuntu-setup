@@ -3,7 +3,11 @@
 set -e
 set -o pipefail
 
-INSTALL_DIR="$HOME/.local/share/JetBrains/Toolbox/bin"
+EXECUTABLE="jetbrains-toolbox"
+
+echo "$HOME"
+
+INSTALLED_EXECUTABLE="$HOME/.local/share/JetBrains/Toolbox/bin/$EXECUTABLE"
 
 SYMLINK_DIR="$HOME/.local/bin"
 TMP_DIR="/tmp"
@@ -25,10 +29,10 @@ echo -e "\e[94mSetup and Symlinking to $SYMLINK_DIR/jetbrains-toolbox...\e[39m"
 echo -e "\e[94mRunning for the first time to set-up...\e[39m"
 ( "$TMP_DIR/jetbrains-toolbox" & )
 mkdir -p "$SYMLINK_DIR"
-rm "$SYMLINK_DIR/jetbrains-toolbox" 2>/dev/null || true
-ln -s "$INSTALL_DIR/jetbrains-toolbox" "$SYMLINK_DIR/jetbrains-toolbox"
+rm "$SYMLINK_DIR/$EXECUTABLE" 2>/dev/null || true
+ln -s "$INSTALLED_EXECUTABLE" "$SYMLINK_DIR/$EXECUTABLE"
 echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your application list, and you can run it in terminal as jetbrains-toolbox (ensure that $SYMLINK_DIR is on your PATH)\e[39m\n"
 
 
 echo -e "\e[94mAdding to Environment and Setting Launcher Icon on Windows...\e[39m"
-echo -e "[Desktop Entry]\nType=Application\nName=Jetbrains Toolbox\nExec=$INSTALL_DIR" | tee /usr/share/applications/toolbox.desktop
+echo -e "[Desktop Entry]\nType=Application\nName=Jetbrains Toolbox\nExec=$INSTALLED_EXECUTABLE" | tee /usr/share/applications/jetbrains-toolbox.desktop
