@@ -6,7 +6,9 @@ set -o pipefail
 #https://www.intel.com/content/www/us/en/docs/oneapi/installation-guide-linux/2023-2/configure-wsl-2-for-gpu-workflows.html
 
 echo -e "\e[94mAdding Repositories...\e[39m"
-sudo apt-get install -y gpg-agent wget
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y gpg-agent wget
 wget -qO - https://repositories.intel.com/graphics/intel-graphics.key |
   sudo gpg --yes --dearmor --output /usr/share/keyrings/intel-graphics.gpg
 echo 'deb [arch=amd64,i386 signed-by=/usr/share/keyrings/intel-graphics.gpg] https://repositories.intel.com/graphics/ubuntu jammy arc' | \
@@ -14,7 +16,6 @@ echo 'deb [arch=amd64,i386 signed-by=/usr/share/keyrings/intel-graphics.gpg] htt
 
 echo -e "\e[94mInstalling GPU Runtime...\e[39m"
 sudo apt update
-sudo apt upgrade -y
 sudo apt install -y \
   intel-opencl-icd intel-level-zero-gpu level-zero \
   intel-media-va-driver-non-free libmfx1 libmfxgen1 libvpl2 \
