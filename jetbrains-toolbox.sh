@@ -5,22 +5,17 @@ set -o pipefail
 
 EXECUTABLE="jetbrains-toolbox"
 
-#!/bin/bash
 
 if [ -n "$SUDO_USER" ]
 then
-    HOME_DIR=$(eval echo ~$SUDO_USER)
+    HOME_DIR=$(eval echo ~"$SUDO_USER")
 else
     HOME_DIR="$HOME"
 fi
 
-echo "$HOME_DIR"
+INSTALLED_EXECUTABLE="$HOME_DIR/.local/share/JetBrains/Toolbox/bin/$EXECUTABLE"
 
-echo "$HOME"
-
-INSTALLED_EXECUTABLE="$HOME/.local/share/JetBrains/Toolbox/bin/$EXECUTABLE"
-
-SYMLINK_DIR="$HOME/.local/bin"
+SYMLINK_DIR="$HOME_DIR/.local/bin"
 TMP_DIR="/tmp"
 
 echo -e "\e[94mFetching the URL of the latest version...\e[39m"
