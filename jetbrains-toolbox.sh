@@ -41,4 +41,12 @@ echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your applicat
 
 
 echo -e "\e[94mAdding to Environment and Setting Launcher Icon on Windows...\e[39m"
-cp -f "$INSTALL_DIR/jetbrains-toolbox.desktop" "/usr/share/applications/"
+echo "[Desktop Entry]
+Type=Application
+Name=JetBrains Toolbox
+Exec=jetbrains-toolbox
+Icon=jetbrains-toolbox
+StartupNotify=false
+Terminal=false
+MimeType=x-scheme-handler/jetbrains;
+X-AppImage-Integrate=false" > "/usr/share/applications/jetbrains-toolbox.desktop"
