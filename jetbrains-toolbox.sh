@@ -41,4 +41,4 @@ Icon=jetbrains-toolbox
 StartupNotify=false
 Terminal=false
 MimeType=x-scheme-handler/jetbrains;
-X-AppImage-Integrate=false" > "/usr/share/applications/jetbrains-toolbox.desktop"
+X-AppImage-Integrate=false" | sudo tee "/usr/share/applications/jetbrains-toolbox.desktop"
