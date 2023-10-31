@@ -9,19 +9,10 @@ ARCHIVE_FILENAME=$(basename "$ARCHIVE_URL")
 
 echo -e "\e[94mDownload and installing $ARCHIVE_FILENAME...\e[39m"
 sudo wget --show-progress -O- "$ARCHIVE_URL" | sudo tar -xzf - --strip-components=1 -C /opt
-#sudo curl -L --progress-bar "$ARCHIVE_URL" | sudo tar -xzf - --strip-components=1 -C /opt
 
-#echo -e "\e[94mSetting Launcher Icon on Windows...\e[39m"
-#echo -e "[Desktop Entry]\nType=Application\nName=Jetbrains Toolbox\nExec=/opt/jetbrains-toolbox" | sudo tee /usr/share/applications/toolbox.desktop
-sudo add-apt-repository -y ppa:appimagelauncher-team/stable
+echo -e "\e[94mInstall dependencies...\e[39m"
 sudo apt update
-sudo apt install -y appimagelauncher
+sudo apt install -y libfuse2 xterm
 
-
-if [ -z "$CI" ]; then
-	echo -e "\e[94mRunning for the first time to set-up...\e[39m"
-	( "/opt/jetbrains-toolbox" & )
-	echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your application list, and you can run it in terminal as jetbrains-toolbox (ensure that $SYMLINK_DIR is on your PATH)\e[39m\n"
-else
-	echo -e "\n\e[32mDone! Running in a CI -- skipped launching the AppImage.\e[39m\n"
-fi
+echo -e "\e[94mAdding to Environment and Setting Launcher Icon on Windows...\e[39m"
+echo -e "[Desktop Entry]\nType=Application\nName=Jetbrains Toolbox\nExec=" | sudo tee /usr/share/applications/toolbox.desktop
