@@ -13,7 +13,7 @@ ARCHIVE_URL=$(curl -s 'https://data.services.jetbrains.com/products/releases?cod
 ARCHIVE_FILENAME=$(basename "$ARCHIVE_URL")
 
 echo -e "\e[94mDownload and installing $ARCHIVE_FILENAME...\e[39m"
-sudo wget --show-progress -O- "$ARCHIVE_URL" | sudo tar -xzf - --strip-components=1 -C "$TMP_DIR"
+wget --show-progress -O- "$ARCHIVE_URL" | tar -xzf - --strip-components=1 -C "$TMP_DIR"
 
 
 echo -e "\e[94mInstall dependencies...\e[39m"
