@@ -5,7 +5,7 @@ set -o pipefail
 
 EXECUTABLE="jetbrains-toolbox"
 
-INSTALL_DIR="$HOME/.local/share/JetBrains/Toolbox/bin"
+INSTALL_DIR="$HOME/.local/share/JetBrains/Toolbox"
 
 SYMLINK_DIR="$HOME/.local/bin"
 TMP_DIR="/tmp"
@@ -27,17 +27,18 @@ echo -e "\e[94mRunning for the first time to set-up...\e[39m"
 ( "$TMP_DIR/$EXECUTABLE" & )
 mkdir -p "$SYMLINK_DIR"
 rm "$SYMLINK_DIR/$EXECUTABLE" 2>/dev/null || true
-ln -s "$INSTALL_DIR/$EXECUTABLE" "$SYMLINK_DIR/$EXECUTABLE"
+ln -s "$INSTALL_DIR/bin/$EXECUTABLE" "$SYMLINK_DIR/$EXECUTABLE"
 echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your application list, and you can run it in terminal as jetbrains-toolbox (ensure that $SYMLINK_DIR is on your PATH)\e[39m\n"
 
 
 echo -e "\e[94mAdding to Environment and Setting Launcher Icon on Windows...\e[39m"
 echo "[Desktop Entry]
-Type=Application
-Name=JetBrains Toolbox
-Exec=jetbrains-toolbox
-Icon=jetbrains-toolbox
-StartupNotify=false
-Terminal=false
-MimeType=x-scheme-handler/jetbrains;
-X-AppImage-Integrate=false" | sudo tee "/usr/share/applications/jetbrains-toolbox.desktop"
+      Type=Application
+      Name=JetBrains Toolbox
+      Exec=jetbrains-toolbox
+      Icon=$INSTALL_DIR/toolbox.svg
+      StartupNotify=false
+      Terminal=false
+      MimeType=x-scheme-handler/jetbrains;
+      X-AppImage-Integrate=false
+" | sudo tee "/usr/share/applications/jetbrains-toolbox.desktop"
