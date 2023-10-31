@@ -5,6 +5,17 @@ set -o pipefail
 
 EXECUTABLE="jetbrains-toolbox"
 
+#!/bin/bash
+
+if [ -n "$SUDO_USER" ]
+then
+    HOME_DIR=$(eval echo ~$SUDO_USER)
+else
+    HOME_DIR="$HOME"
+fi
+
+echo "$HOME_DIR"
+
 echo "$HOME"
 
 INSTALLED_EXECUTABLE="$HOME/.local/share/JetBrains/Toolbox/bin/$EXECUTABLE"
