@@ -41,4 +41,4 @@ echo "[Desktop Entry]
       Terminal=false
       MimeType=x-scheme-handler/jetbrains;
       X-AppImage-Integrate=false
-" | sudo tee "/usr/share/applications/jetbrains-toolbox.desktop"
+" | sudo tee "/usr/share/applications/jetbrains-toolbox.desktop" > /dev/null
