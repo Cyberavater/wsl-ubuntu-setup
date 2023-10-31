@@ -24,7 +24,8 @@ wget --show-progress -O- "$ARCHIVE_URL" | tar -xzf - --strip-components=1 -C "$T
 
 echo -e "\e[94mSetup and Symlinking to $SYMLINK_DIR/jetbrains-toolbox...\e[39m"
 echo -e "\e[94mRunning for the first time to set-up...\e[39m"
-( "$TMP_DIR/$EXECUTABLE" & )
+$TMP_DIR/$EXECUTABLE
+rm $TMP_DIR/$EXECUTABLE
 mkdir -p "$SYMLINK_DIR"
 rm "$SYMLINK_DIR/$EXECUTABLE" 2>/dev/null || true
 ln -s "$INSTALL_DIR/bin/$EXECUTABLE" "$SYMLINK_DIR/$EXECUTABLE"
