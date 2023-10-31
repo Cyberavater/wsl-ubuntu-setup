@@ -29,7 +29,6 @@ rm $TMP_DIR/$EXECUTABLE
 mkdir -p "$SYMLINK_DIR"
 rm "$SYMLINK_DIR/$EXECUTABLE" 2>/dev/null || true
 ln -s "$INSTALL_DIR/bin/$EXECUTABLE" "$SYMLINK_DIR/$EXECUTABLE"
-echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your application list, and you can run it in terminal as jetbrains-toolbox (ensure that $SYMLINK_DIR is on your PATH)\e[39m\n"
 
 
 echo -e "\e[94mAdding to Environment and Setting Launcher Icon on Windows...\e[39m"
@@ -43,3 +42,4 @@ echo "[Desktop Entry]
       MimeType=x-scheme-handler/jetbrains;
       X-AppImage-Integrate=false
 " | sudo tee "/usr/share/applications/jetbrains-toolbox.desktop" > /dev/null
+echo -e "\n\e[32mDone! JetBrains Toolbox should now be running, in your application list, and you can run it in terminal as jetbrains-toolbox (ensure that $SYMLINK_DIR is on your PATH)\e[39m\n"
