@@ -10,7 +10,7 @@ INSTALL_DIR="$HOME/.local/share/JetBrains/Toolbox"
 SYMLINK_DIR="$HOME/.local/bin"
 TMP_DIR="/tmp"
 
-echo -e "\e[94mInstall or Checking dependencies...\e[39m"
+echo -e "\e[94mCheck and Install dependencies...\e[39m"
 sudo apt update
 sudo apt install -y libfuse2 libxi6 libxrender1 libxtst6 mesa-utils libfontconfig libgtk-3-bin tar
 
