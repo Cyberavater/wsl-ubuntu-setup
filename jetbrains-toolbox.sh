@@ -5,17 +5,9 @@ set -o pipefail
 
 EXECUTABLE="jetbrains-toolbox"
 
+INSTALL_DIR="$HOME/.local/share/JetBrains/Toolbox/bin"
 
-if [ -n "$SUDO_USER" ]
-then
-    HOME_DIR=$(eval echo ~"$SUDO_USER")
-else
-    HOME_DIR="$HOME"
-fi
-
-INSTALL_DIR="$HOME_DIR/.local/share/JetBrains/Toolbox/bin"
-
-SYMLINK_DIR="$HOME_DIR/.local/bin"
+SYMLINK_DIR="$HOME/.local/bin"
 TMP_DIR="/tmp"
 
 echo -e "\e[94mFetching the URL of the latest version...\e[39m"
@@ -33,7 +25,7 @@ sudo apt install -y libfuse2 libxi6 libxrender1 libxtst6 mesa-utils libfontconfi
 
 echo -e "\e[94mSetup and Symlinking to $SYMLINK_DIR/jetbrains-toolbox...\e[39m"
 echo -e "\e[94mRunning for the first time to set-up...\e[39m"
-( "$TMP_DIR/jetbrains-toolbox" & )
+( "$TMP_DIR/$EXECUTABLE" & )
 mkdir -p "$SYMLINK_DIR"
 rm "$SYMLINK_DIR/$EXECUTABLE" 2>/dev/null || true
 ln -s "$INSTALL_DIR/$EXECUTABLE" "$SYMLINK_DIR/$EXECUTABLE"
