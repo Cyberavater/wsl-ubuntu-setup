@@ -23,7 +23,7 @@ sudo apt install -y libfuse2 libxi6 libxrender1 libxtst6 mesa-utils libfontconfi
 
 echo -e "\e[94mSetup and Symlinking to $SYMLINK_DIR/jetbrains-toolbox...\e[39m"
 echo -e "\e[94mRunning for the first time to set-up...\e[39m"
-( "$INSTALL_DIR/jetbrains-toolbox" & )
+( "$TMP_DIR/jetbrains-toolbox" & )
 mkdir -p "$SYMLINK_DIR"
 rm "$SYMLINK_DIR/jetbrains-toolbox" 2>/dev/null || true
 ln -s "$INSTALL_DIR/jetbrains-toolbox" "$SYMLINK_DIR/jetbrains-toolbox"
